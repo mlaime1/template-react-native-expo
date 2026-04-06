@@ -1,77 +1,64 @@
-# React Native Starter Template
+# Plantilla React Native
 
-Professional base template for React Native projects with Expo + TypeScript.
+Plantilla base profesional para proyectos React Native con Expo + TypeScript. Proporciona una arquitectura limpia y moderna lista para cualquier proyecto o producción. Se pueden agregar features específicas en `src/features/` sin preocuparse por la configuración inicial.
 
-## Objective
+## 🛠️ Stack Tecnológico
 
-Provide a clean and modern architecture ready for any project or production. You can add specific features in `src/features/` without worrying about initial setup.
-
-## 🛠️ Tech Stack
-
-- **Expo SDK** (latest version)
+- **Expo SDK** (última versión)
 - **TypeScript** (strict mode)
-- **Expo Router** (file-based navigation)
-- **Zustand** (global state management)
-- **AsyncStorage** (local persistence)
-- **ESLint + Prettier** (linting and formatting)
+- **Expo Router** (navegación basada en archivos)
+- **Zustand** (state management global)
+- **AsyncStorage** (persistencia local)
+- **ESLint + Prettier** (linting y formateo)
 
-## 📦 Installation
+## 📦 Instalación
 
 ```bash
 npm install
 ```
 
-## 🚀 How to Start
-
+## 🚀 Cómo iniciar
 ```bash
-# Start the development server
-npm run start
-
-# Run on Android
-npm run android
-
-# Run on iOS
-npm run ios
-
-# Run on Web
-npm run web
+npx expo start --tunnel
 ```
 
-Open the app in **Expo Go** or use an emulator/simulator.
+Escaneá el QR con la app **Expo Go** desde tu dispositivo físico (disponible en App Store y Google Play).
 
-## 📂 Project Structure
+> **¿Por qué `--tunnel`?** Este flag crea un túnel para que Expo Go pueda conectarse al servidor de desarrollo aunque haya restricciones de red o el dispositivo no pueda comunicarse directamente con la computadora por LAN.
+
+## 📂 Estructura del Proyecto
 
 ```
 rn-starter/
 ├── src/
-│   ├── app/                 # App routes (expo-router)
-│   │   ├── _layout.tsx      # Main layout
-│   │   └── index.tsx        # Home screen
+│   ├── app/                 # Rutas de la app (expo-router)
+│   │   ├── _layout.tsx      # Layout principal
+│   │   └── index.tsx        # Pantalla Home
 │   ├── components/
-│   │   └── ui/              # Reusable UI components
+│   │   └── ui/              # Componentes UI reutilizables
 │   │       ├── Button.tsx
 │   │       ├── Text.tsx
 │   │       ├── Screen.tsx
 │   │       └── Input.tsx
 │   ├── hooks/               # Custom hooks
 │   │   └── useColorScheme.ts
-│   ├── lib/                 # Utilities and configuration
-│   │   ├── theme.ts         # Design tokens (light/dark)
-│   │   ├── storage.ts       # AsyncStorage helpers
-│   │   └── logger.ts        # Development logger
-│   ├── services/            # External services (API, etc.)
+│   ├── lib/                 # Utilidades y configuración
+│   │   ├── theme.ts         # Tokens de diseño (light/dark)
+│   │   ├── storage.ts       # Helpers de AsyncStorage
+│   │   └── logger.ts        # Logger para desarrollo
+│   ├── services/            # Servicios externos (API, etc.)
 │   │   └── api.client.placeholder.ts
-│   ├── store/               # Global state (Zustand)
-│   │   └── app.store.ts     # Example store
-│   ├── styles/              # Global styles
+│   ├── store/               # Estado global (Zustand)
+│   │   └── app.store.ts     # Store de ejemplo
+│   ├── styles/              # Estilos globales
 │   │   └── globals.ts       # Spacing, typography, radius
-│   └── features/            # 🎯 ADD YOUR FEATURES HERE
-└── assets/                  # Images, fonts, etc.
+│   └── features/            # 🎯 AGREGA TUS FEATURES AQUÍ
+└── assets/                  # Imágenes, fuentes, etc.
 ```
 
-## How to Add a New Screen
+## Cómo agregar una nueva pantalla
 
-With **expo-router**, simply create a file in `src/app/`:
+Con **expo-router**, simplemente crea un archivo en `src/app/`:
 
 ```tsx
 // src/app/profile.tsx
@@ -82,17 +69,17 @@ import Text from '@/components/ui/Text';
 export default function Profile() {
   return (
     <Screen>
-      <Text>My Profile</Text>
+      <Text>Mi Perfil</Text>
     </Screen>
   );
 }
 ```
 
-The route will automatically be `/profile`.
+La ruta será automáticamente `/profile`.
 
 ## 📐 Absolute Imports
 
-Use `@/*` to import from `src/`:
+Usa `@/*` para importar desde `src/`:
 
 ```tsx
 import Button from '@/components/ui/Button';
@@ -102,18 +89,18 @@ import { useAppStore } from '@/store/app.store';
 
 ## 🎨 Theming
 
-The theme system is in `src/lib/theme.ts`:
+El sistema de temas está en `src/lib/theme.ts`:
 
 ```ts
 theme.light; // { bg, text, muted, primary, border }
 theme.dark; // { bg, text, muted, primary, border }
 ```
 
-Use `useColorScheme()` to detect system mode.
+Usa `useColorScheme()` para detectar el modo del sistema.
 
-## 💾 Local Persistence
+## 💾 Persistencia Local
 
-Ready-to-use helpers in `src/lib/storage.ts`:
+Helpers listos en `src/lib/storage.ts`:
 
 ```ts
 await storage.set('key', value);
@@ -121,34 +108,32 @@ const value = await storage.get<Type>('key');
 await storage.remove('key');
 ```
 
-## 🗂️ Global State (Zustand)
+## 🗂️ Estado Global (Zustand)
 
-Example store in `src/store/app.store.ts`:
+Store de ejemplo en `src/store/app.store.ts`:
 
 ```ts
 const ready = useAppStore((state) => state.ready);
 const setReady = useAppStore((state) => state.setReady);
 ```
 
-Create your own stores for specific features.
+Crea tus propios stores para features específicas.
 
-## ✅ Best Practices
+## ✅ Buenas Prácticas
 
-1. **Global state**: Create specific stores in `src/store/`
-2. **Utilities**: Add helpers in `src/lib/`
-3. **UI Components**: Keep generic components in `src/components/ui/`
-4. **Features**: Organize business logic in `src/features/[feature-name]/`
-5. **Services**: API configuration in `src/services/`
+1. **Estado global**: Crea stores específicos en `src/store/`
+2. **Utilidades**: Agrega helpers en `src/lib/`
+3. **Componentes UI**: Mantén componentes genéricos en `src/components/ui/`
+4. **Features**: Organiza lógica de negocio en `src/features/[nombre-feature]/`
+5. **Servicios**: Configuración de API en `src/services/`
 
-## 🧹 Available Scripts
+## 🧹 Scripts Disponibles
 
 ```bash
-npm run start     # Start development
-npm run lint      # Run ESLint
-npm run format    # Format code with Prettier
+npm run lint      # Ejecutar ESLint
+npm run format    # Formatear código con Prettier
 ```
 
 ---
 
-**Ready to start your project!** 🚀
-
+**¡Listo para comenzar tu proyecto!** 🚀
