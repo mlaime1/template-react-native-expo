@@ -1,13 +1,15 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Text, View } from 'react-native'
 
 type Props = {
-    task: string
+  task: string
 }
 
 function Item({ task }: Props) {
   return (
-    <View>• {task}</View>
+    <View>
+      <Text>• {task}</Text>
+    </View>
   )
 }
 
