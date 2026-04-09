@@ -2,7 +2,7 @@ import React from 'react';
 import Screen from '@/components/ui/Screen';
 import BrandHeader from '@/components/ui/BrandHeader';
 import logo from "../../assets/logo.png"
-import ListTask from '@/components/ui/ListTask';
+import TodoList from '@/components/ui/TodoList';
 
 export default function Home() {
   return (
@@ -11,7 +11,7 @@ export default function Home() {
         title="Mi App"
         subtitle="Bienvenido"
         logo={logo} />
-        <ListTask/>
+        <TodoList/>
     </Screen>
   );
 }
